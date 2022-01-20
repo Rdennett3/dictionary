@@ -1,25 +1,34 @@
-import logo from './logo.svg';
+import { Container } from '@mui/material';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import './App.css';
+import Header from './components/Header/Header';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  const [word, setWord] = useState("");
+  const [ meanings, setMeanings ] = useState([]);
+
+    const dictionaryApi = async() => {
+      try {
+        const data = await axios.get(' https://api.dictionaryapi.dev/api/v2/entries/en/house');
+        console.log(data);
+        setMeanings(data.data);
+      } catch (error) {
+        
+      }
+    };
+    
+    console.log(meanings);
+
+    useEffect(() => {
+      dictionaryApi();
+    }, [])
+    
+    return <div className="App" style={{height:'100vh', backgroundColor:'#090C08', color:'#D10000'}}>
+      <Container maxWidth="md" style={{display:'flex', flexDirection:"column", justifyContent:"center", alignItems:"center", height:'100vh'}}>
+        <Header />
+      </Container>
     </div>
-  );
 }
 
 export default App;
