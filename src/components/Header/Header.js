@@ -2,9 +2,9 @@ import React from 'react';
 import "./Header.css";
 import { FormControl, FormHelperText, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import category from "../../data/category.js";
+import categories from "../../data/category.js";
 
-const Header = () => {
+const Header = ({setCategory, category}) => {
 
   const darkTheme = createTheme({
     palette: {
@@ -20,20 +20,20 @@ const Header = () => {
 
   return (
     <div className='header'>
-      <span className='title'>Word Hunt</span>
+      <span className='title'>Dictionary App</span>
       <div className='inputs'>
         <ThemeProvider theme={darkTheme}>
             <TextField id="outlined-basic" label="Enter Word here" variant="outlined" style={{margin:"8px"}} />
 
             <FormControl sx={{ m: 1, minWidth: 120 }}>
         <Select
-          value={age}
-          onChange={handleChange}
+          value={category}
+          onChange={(e)=>setCategory(e.target.value)}
           displayEmpty
           inputProps={{ 'aria-label': 'Without label' }}
-          style={{margin:'0'}}
+          style={{margin:'0'}}  
         >
-        {category.map((option) => (
+        {categories.map((option) => (
           <MenuItem key={option.label} value={option.label}>{option.value}</MenuItem>
         ))}
         </Select>
