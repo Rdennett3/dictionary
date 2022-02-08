@@ -4,7 +4,7 @@ import { FormControl, FormHelperText, InputLabel, MenuItem, Select, TextField } 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import categories from "../../data/category.js";
 
-const Header = ({setCategory, category}) => {
+const Header = ({setCategory, category, word, setWord}) => {
 
   const darkTheme = createTheme({
     palette: {
@@ -20,10 +20,10 @@ const Header = ({setCategory, category}) => {
 
   return (
     <div className='header'>
-      <span className='title'>Dictionary App</span>
+      <span className='title'>{word?word:"dic·tion·ar·y"}</span>
       <div className='inputs'>
         <ThemeProvider theme={darkTheme}>
-            <TextField id="outlined-basic" label="Enter Word here" variant="outlined" style={{margin:"8px"}} />
+            <TextField id="outlined-basic" value={word} onChange={(e)=>setWord(e.target.value)} className='search' label="Enter Word here" variant="outlined" style={{margin:"8px"}} />
 
             <FormControl sx={{ m: 1, minWidth: 120 }}>
         <Select
