@@ -23,7 +23,7 @@ const Header = () => {
       <span className='title'>Word Hunt</span>
       <div className='inputs'>
         <ThemeProvider theme={darkTheme}>
-            <TextField id="outlined-basic" label="Enter Word here" variant="outlined" />
+            <TextField id="outlined-basic" label="Enter Word here" variant="outlined" style={{margin:"8px"}} />
 
             <FormControl sx={{ m: 1, minWidth: 120 }}>
         <Select
@@ -34,7 +34,7 @@ const Header = () => {
           style={{margin:'0'}}
         >
         {category.map((option) => (
-          <MenuItem>{option.value}</MenuItem>
+          <MenuItem key={option.label} value={option.label}>{option.value}</MenuItem>
         ))}
         </Select>
       </FormControl>
