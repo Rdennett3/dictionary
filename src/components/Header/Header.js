@@ -1,7 +1,8 @@
 import React from 'react';
 import "./Header.css";
-import { FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
+import { FormControl, FormHelperText, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import category from "../../data/category.js";
 
 const Header = () => {
 
@@ -11,6 +12,12 @@ const Header = () => {
     },
   });
 
+  const [age, setAge] = React.useState('');
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
+
   return (
     <div className='header'>
       <span className='title'>Word Hunt</span>
@@ -18,18 +25,19 @@ const Header = () => {
         <ThemeProvider theme={darkTheme}>
             <TextField id="outlined-basic" label="Enter Word here" variant="outlined" />
 
-            <FormControl fullWidth>
-  <InputLabel id="demo-simple-select-label">Age</InputLabel>
-  <Select
-    labelId="demo-simple-select-label"
-    id="demo-simple-select"
-    label="Age"
-  >
-    <MenuItem value={10}>Ten</MenuItem>
-    <MenuItem value={20}>Twenty</MenuItem>
-    <MenuItem value={30}>Thirty</MenuItem>
-  </Select>
-</FormControl>
+            <FormControl sx={{ m: 1, minWidth: 120 }}>
+        <Select
+          value={age}
+          onChange={handleChange}
+          displayEmpty
+          inputProps={{ 'aria-label': 'Without label' }}
+          style={{margin:'0'}}
+        >
+        {category.map((option) => (
+          <MenuItem>{option.value}</MenuItem>
+        ))}
+        </Select>
+      </FormControl>
         </ThemeProvider>
         
       </div>
