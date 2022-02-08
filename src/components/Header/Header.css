@@ -1,4 +1,6 @@
 .title{
     font-size: 7vw;
-    text-transform:uppercase;
+    height:30vh;
+    text-transform:capitalize;
+    font-family: 'Oswald', cursive;
 }

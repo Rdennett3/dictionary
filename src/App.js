@@ -24,8 +24,8 @@ function App() {
       dictionaryApi();
     }, [])
     
-    return <div className="App" style={{height:'100vh', backgroundColor:'#090C08', color:'#D10000'}}>
-      <Container maxWidth="md" style={{display:'flex', flexDirection:"column", justifyContent:"center", alignItems:"center", height:'100vh'}}>
+    return <div className="App" style={{height:'100vh', backgroundColor:'#39393A', color:'#D10000'}}>
+      <Container maxWidth="md" style={{display:'flex', flexDirection:"column", justifyContent:"flex-start", alignItems:"flex-start", height:'100vh'}}>
         <Header />
       </Container>
     </div>
